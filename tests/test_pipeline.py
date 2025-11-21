@@ -30,12 +30,12 @@ def dirty_morpheme_file(tmp_path):
 
 
 def test_initial_classification_and_scoring(dirty_morpheme_file):
-    cleaner = MorphemeCleaner(language='hungarian', min_length=2, min_type_support=2)
+    cleaner = MorphemeCleaner(language="hungarian", min_length=2, min_type_support=2)
 
     root_candidates, affix_candidates, initial_scores, junk = (
         cleaner._initial_classification_and_scoring(dirty_morpheme_file)
     )
-    
+
     all_candidates = root_candidates | affix_candidates
 
     expected_survivors = {
@@ -62,10 +62,7 @@ def test_scoring_iteration_logic():
     initial_scores = {"ház": 1.0 / 3.0, "ban": 1.0 / 3.0, "házban": 1.0 / 6.0}
 
     new_scores = run_scoring_iteration(
-        root_candidates,
-        affix_candidates,
-        initial_scores,
-        set()  # empty whitelist
+        root_candidates, affix_candidates, initial_scores, set()  # empty whitelist
     )
 
     assert new_scores["ház"] >= initial_scores["ház"]
@@ -88,10 +85,7 @@ def test_multicomponent_decomposition():
     }
 
     new_scores = run_scoring_iteration(
-        root_candidates,
-        affix_candidates,
-        initial_scores,
-        set()  # empty whitelist
+        root_candidates, affix_candidates, initial_scores, set()  # empty whitelist
     )
 
     assert new_scores["ház"] >= initial_scores["ház"]
