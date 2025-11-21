@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "samponlp"
-version = "0.3.0"
+dynamic = ["version"]
 description = "Unsupervised morpheme discovery for Uralic languages using the IMDP algorithm"
 readme = "README.md"
 authors = [
@@ -12,7 +12,16 @@ authors = [
 ]
 license = {text = "Apache-2.0"}
 requires-python = ">=3.8"
-keywords = ["morphology", "NLP", "Uralic", "unsupervised learning", "morpheme segmentation", "Finnish", "Estonian", "Hungarian"]
+keywords = [
+    "morphology",
+    "NLP",
+    "Uralic",
+    "unsupervised learning",
+    "morpheme segmentation",
+    "Finnish",
+    "Estonian",
+    "Hungarian"
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Rust",
@@ -52,3 +61,4 @@ Changelog = "https://github.com/AragonerUA/samponlp/blob/main/CHANGELOG.md"
 [tool.maturin]
 python-source = "."
 module-name = "samponlp.samponlp"
+bindings = "pyo3"
