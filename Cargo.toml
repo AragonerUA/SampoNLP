@@ -1,12 +1,12 @@
 [package]
 name = "samponlp"
 version = "0.3.0"
-edition = "2021"
-authors = ["Yaroslav Chelombitko <les4sixstm@gmail.com>"]
+edition = "2025"
+authors = ["Iaroslav Chelombitko <les4sixstm@gmail.com>"]
 description = "Unsupervised morpheme discovery for Uralic languages"
 license = "Apache-2.0"
-repository = "https://github.com/yourusername/samponlp"
-homepage = "https://github.com/yourusername/samponlp"
+repository = "https://github.com/AragonerUA/samponlp"
+homepage = "https://github.com/AragonerUA/samponlp"
 keywords = ["morphology", "nlp", "uralic", "unsupervised"]
 
 [lib]

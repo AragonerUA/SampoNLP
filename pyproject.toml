@@ -8,7 +8,7 @@ version = "0.3.0"
 description = "Unsupervised morpheme discovery for Uralic languages using the IMDP algorithm"
 readme = "README.md"
 authors = [
-    {name = "Yaroslav Chelombitko", email = "les4sixstm@gmail.com"}
+    {name = "Iaroslav Chelombitko", email = "les4sixstm@gmail.com"}
 ]
 license = {text = "Apache-2.0"}
 requires-python = ">=3.8"
@@ -43,11 +43,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/samponlp"
-Repository = "https://github.com/yourusername/samponlp"
-Documentation = "https://github.com/yourusername/samponlp/wiki"
-"Bug Tracker" = "https://github.com/yourusername/samponlp/issues"
-Changelog = "https://github.com/yourusername/samponlp/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/AragonerUA/samponlp"
+Repository = "https://github.com/AragonerUA/samponlp"
+Documentation = "https://github.com/AragonerUA/samponlp/wiki"
+"Bug Tracker" = "https://github.com/AragonerUA/samponlp/issues"
+Changelog = "https://github.com/AragonerUA/samponlp/blob/main/CHANGELOG.md"
 
 [tool.maturin]
 python-source = "."

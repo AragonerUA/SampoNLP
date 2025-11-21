@@ -5,11 +5,11 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: Yaroslav
+  - given-names: Iaroslav
     family-names: Chelombitko
     email: les4sixstm@gmail.com
-repository-code: 'https://github.com/yourusername/samponlp'
-url: 'https://github.com/yourusername/samponlp'
+repository-code: 'https://github.com/AragonerUA/samponlp'
+url: 'https://github.com/AragonerUA/samponlp'
 abstract: >-
   SampoNLP is a high-performance library for unsupervised morpheme discovery
   from raw text corpora, implementing the Iterative Morpheme Decomposition 
