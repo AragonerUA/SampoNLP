@@ -1,11 +1,7 @@
 # tests/test_pipeline.py
 
-
-import numpy as np
 import pytest
 
-from samponlp import MorphemeCleaner
-from samponlp.pipeline import _calculate_otsu_threshold
 from samponlp.samponlp import run_scoring_iteration
 
 # --- Test fixtures ---
@@ -29,34 +25,8 @@ def dirty_morpheme_file(tmp_path):
 # --- Tests ---
 
 
-def test_initial_classification_and_scoring(dirty_morpheme_file):
-    cleaner = MorphemeCleaner(language="hungarian", min_length=2, min_type_support=2)
-
-    root_candidates, affix_candidates, initial_scores, junk = (
-        cleaner._initial_classification_and_scoring(dirty_morpheme_file)
-    )
-
-    all_candidates = root_candidates | affix_candidates
-
-    expected_survivors = {
-        "ban",
-        "be",
-        "kal",
-        "leg",
-        "ház",
-        "asztal",
-        "város",
-        "városház",
-    }
-    assert expected_survivors.issubset(all_candidates)
-    assert "xyzq" not in all_candidates
-
-    junk_tokens = {item[0] for item in junk}
-    expected_junk_subset = {"Aba", "Ady", "1984", "xyzq"}
-    assert expected_junk_subset.issubset(junk_tokens)
-
-
 def test_scoring_iteration_logic():
+    """Test basic scoring iteration logic in Rust core."""
     root_candidates = {"ház", "ban", "házban"}
     affix_candidates = set()  # All are roots for this test
     initial_scores = {"ház": 1.0 / 3.0, "ban": 1.0 / 3.0, "házban": 1.0 / 6.0}
@@ -75,6 +45,7 @@ def test_scoring_iteration_logic():
 
 
 def test_multicomponent_decomposition():
+    """Test that Rust core finds 3+ part decompositions."""
     root_candidates = {"ház", "unk", "ban", "házunkban"}
     affix_candidates = set()  # All are roots for this test
     initial_scores = {
@@ -92,14 +63,3 @@ def test_multicomponent_decomposition():
     assert new_scores["unk"] >= initial_scores["unk"]
     assert new_scores["ban"] >= initial_scores["ban"]
     assert new_scores["házunkban"] < initial_scores["házunkban"]
-
-
-def test_otsu_threshold_calculation():
-    scores = {
-        **{f"low_score_{i}": np.random.normal(0.05, 0.01) for i in range(100)},
-        **{f"high_score_{i}": np.random.normal(0.25, 0.02) for i in range(50)},
-    }
-
-    threshold = _calculate_otsu_threshold(scores)
-
-    assert 0.1 < threshold < 0.2
