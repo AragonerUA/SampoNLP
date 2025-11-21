@@ -5,7 +5,7 @@ import numpy as np
 import pytest
 
 from samponlp import MorphemeCleaner
-from samponlp._core import run_scoring_iteration
+from samponlp.samponlp import run_scoring_iteration
 from samponlp.pipeline import _calculate_otsu_threshold
 
 # --- Test fixtures ---
@@ -13,7 +13,7 @@ from samponlp.pipeline import _calculate_otsu_threshold
 
 @pytest.fixture
 def dirty_morpheme_file(tmp_path):
-    """Creates a temporary “dirty” file for testing classification and type support."""
+    """Creates a temporary "dirty" file for testing classification and type support."""
     content = (
         "-ban\n-be\n-kal\nleg-\n"
         "ház\nasztal\nváros\nvárosház\n"
@@ -30,11 +30,13 @@ def dirty_morpheme_file(tmp_path):
 
 
 def test_initial_classification_and_scoring(dirty_morpheme_file):
-    cleaner = MorphemeCleaner(min_length=2, min_type_support=2)
+    cleaner = MorphemeCleaner(language='hungarian', min_length=2, min_type_support=2)
 
-    candidates, initial_scores, junk = cleaner._initial_classification_and_scoring(
-        dirty_morpheme_file
+    root_candidates, affix_candidates, initial_scores, junk = (
+        cleaner._initial_classification_and_scoring(dirty_morpheme_file)
     )
+    
+    all_candidates = root_candidates | affix_candidates
 
     expected_survivors = {
         "ban",
@@ -46,8 +48,8 @@ def test_initial_classification_and_scoring(dirty_morpheme_file):
         "város",
         "városház",
     }
-    assert expected_survivors.issubset(candidates)
-    assert "xyzq" not in candidates
+    assert expected_survivors.issubset(all_candidates)
+    assert "xyzq" not in all_candidates
 
     junk_tokens = {item[0] for item in junk}
     expected_junk_subset = {"Aba", "Ady", "1984", "xyzq"}
@@ -55,10 +57,16 @@ def test_initial_classification_and_scoring(dirty_morpheme_file):
 
 
 def test_scoring_iteration_logic():
-    candidates = {"ház", "ban", "házban"}
+    root_candidates = {"ház", "ban", "házban"}
+    affix_candidates = set()  # All are roots for this test
     initial_scores = {"ház": 1.0 / 3.0, "ban": 1.0 / 3.0, "házban": 1.0 / 6.0}
 
-    new_scores = run_scoring_iteration(candidates, initial_scores)
+    new_scores = run_scoring_iteration(
+        root_candidates,
+        affix_candidates,
+        initial_scores,
+        set()  # empty whitelist
+    )
 
     assert new_scores["ház"] >= initial_scores["ház"]
     assert new_scores["ban"] >= initial_scores["ban"]
@@ -70,7 +78,8 @@ def test_scoring_iteration_logic():
 
 
 def test_multicomponent_decomposition():
-    candidates = {"ház", "unk", "ban", "házunkban"}
+    root_candidates = {"ház", "unk", "ban", "házunkban"}
+    affix_candidates = set()  # All are roots for this test
     initial_scores = {
         "ház": 1.0 / 3.0,
         "unk": 1.0 / 3.0,
@@ -78,7 +87,12 @@ def test_multicomponent_decomposition():
         "házunkban": 1.0 / 9.0,
     }
 
-    new_scores = run_scoring_iteration(candidates, initial_scores)
+    new_scores = run_scoring_iteration(
+        root_candidates,
+        affix_candidates,
+        initial_scores,
+        set()  # empty whitelist
+    )
 
     assert new_scores["ház"] >= initial_scores["ház"]
     assert new_scores["unk"] >= initial_scores["unk"]
