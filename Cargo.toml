@@ -1,7 +1,7 @@
 [package]
 name = "samponlp"
 version = "0.3.0"
-edition = "2025"
+edition = "2021"
 authors = ["Iaroslav Chelombitko <les4sixstm@gmail.com>"]
 description = "Unsupervised morpheme discovery for Uralic languages"
 license = "Apache-2.0"
