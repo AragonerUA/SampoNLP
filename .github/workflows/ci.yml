@@ -29,6 +29,22 @@ jobs:
     - name: Set up Rust
       uses: dtolnay/rust-toolchain@stable
     
+    - name: Create virtual environment (Unix)
+      if: runner.os != 'Windows'
+      run: |
+        python -m venv .venv
+        source .venv/bin/activate
+        echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+        echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+    
+    - name: Create virtual environment (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        python -m venv .venv
+        .venv\Scripts\Activate.ps1
+        echo "VIRTUAL_ENV=$pwd\.venv" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        echo "$pwd\.venv\Scripts" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
