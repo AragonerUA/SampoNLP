@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+*.mo
+*.pot
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+results/
+*.log
+.maturin/
+
+# Large data files (raw Wikipedia dumps)
+# These are not needed for the library to work
+# Users can download them separately if needed
+data/*.step1
+data/wikipedia_*.latin.step1
+
+# Documentation builds
+docs/_build/
+site/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini

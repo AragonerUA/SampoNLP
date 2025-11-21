@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: 'SampoNLP: Unsupervised Morpheme Discovery for Uralic Languages'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Yaroslav
+    family-names: Chelombitko
+    email: les4sixstm@gmail.com
+repository-code: 'https://github.com/yourusername/samponlp'
+url: 'https://github.com/yourusername/samponlp'
+abstract: >-
+  SampoNLP is a high-performance library for unsupervised morpheme discovery
+  from raw text corpora, implementing the Iterative Morpheme Decomposition 
+  with Positional Priors (IMDP) algorithm.
+keywords:
+  - morphology
+  - NLP
+  - Uralic languages
+  - unsupervised learning
+  - morpheme segmentation
+license: Apache-2.0
+date-released: '2025-01-21'
+version: '0.3.0'

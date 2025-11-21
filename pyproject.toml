@@ -1,0 +1,54 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "samponlp"
+version = "0.3.0"
+description = "Unsupervised morpheme discovery for Uralic languages using the IMDP algorithm"
+readme = "README.md"
+authors = [
+    {name = "Yaroslav Chelombitko", email = "les4sixstm@gmail.com"}
+]
+license = {text = "Apache-2.0"}
+requires-python = ">=3.8"
+keywords = ["morphology", "NLP", "Uralic", "unsupervised learning", "morpheme segmentation", "Finnish", "Estonian", "Hungarian"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = [
+    "numpy>=1.20.0",
+    "tqdm>=4.62.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "maturin>=1.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/samponlp"
+Repository = "https://github.com/yourusername/samponlp"
+Documentation = "https://github.com/yourusername/samponlp/wiki"
+"Bug Tracker" = "https://github.com/yourusername/samponlp/issues"
+Changelog = "https://github.com/yourusername/samponlp/blob/main/CHANGELOG.md"
+
+[tool.maturin]
+python-source = "."
+module-name = "samponlp.samponlp"

@@ -1,0 +1,20 @@
+[package]
+name = "samponlp"
+version = "0.3.0"
+edition = "2021"
+authors = ["Yaroslav Chelombitko <les4sixstm@gmail.com>"]
+description = "Unsupervised morpheme discovery for Uralic languages"
+license = "Apache-2.0"
+repository = "https://github.com/yourusername/samponlp"
+homepage = "https://github.com/yourusername/samponlp"
+keywords = ["morphology", "nlp", "uralic", "unsupervised"]
+
+[lib]
+name = "samponlp"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.20.0", features = ["extension-module"] }
+
+[build-dependencies]
+maturin = "1.3.2"
