@@ -5,8 +5,8 @@ import numpy as np
 import pytest
 
 from samponlp import MorphemeCleaner
-from samponlp.samponlp import run_scoring_iteration
 from samponlp.pipeline import _calculate_otsu_threshold
+from samponlp.samponlp import run_scoring_iteration
 
 # --- Test fixtures ---
 
