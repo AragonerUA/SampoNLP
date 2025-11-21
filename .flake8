@@ -1,0 +1,16 @@
+[flake8]
+max-line-length = 100
+ignore = E203,W503
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .mypy_cache,
+    .pytest_cache
+
+per-file-ignores =
+    samponlp/__init__.py:F401,F403
+    samponlp/run_pipeline.py:E501,F541,F841
+    samponlp/pipeline.py:E501
+    samponlp/data_manager.py:E501
