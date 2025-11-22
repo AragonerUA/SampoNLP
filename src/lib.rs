@@ -4,7 +4,7 @@ use pyo3::prelude::*;
 use std::collections::{HashMap, HashSet};
 
 fn find_best_split(
-    token: &String,
+    _token: &String,
     token_chars: &Vec<char>,
     scores: &HashMap<String, f64>,
     one_char_whitelist: &HashSet<String>,
@@ -19,7 +19,6 @@ fn find_best_split(
             if dp[j] > -1.0 {
                 let sub: String = token_chars[j..i].iter().collect();
 
-                // Degeneracy check
                 if sub.chars().count() == 1 && !one_char_whitelist.contains(&sub) {
                     continue;
                 }
@@ -50,7 +49,6 @@ fn run_scoring_iteration(
 ) -> PyResult<HashMap<String, f64>> {
     let mut new_scores = HashMap::with_capacity(root_candidates.len() + affix_candidates.len());
     
-    // --- Root processing ---
     for token in root_candidates.iter() {
         let token_chars: Vec<char> = token.chars().collect();
         let n = token_chars.len();
@@ -69,13 +67,11 @@ fn run_scoring_iteration(
         }
     }
     
-    // --- Affixes processing ---
     for token in affix_candidates.iter() {
         let token_chars: Vec<char> = token.chars().collect();
         let n = token_chars.len();
         if n == 0 { continue; }
         
-        // is_affix = true
         let best_explanation_power = find_best_split(token, &token_chars, &scores, &one_char_whitelist, true);
 
         let initial_score = 1.0 / n as f64;
@@ -93,7 +89,7 @@ fn run_scoring_iteration(
 }
 
 #[pymodule]
-fn samponlp(_py: Python, m: &PyModule) -> PyResult<()> {
+fn samponlp(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(run_scoring_iteration, m)?)?;
     Ok(())
 }
