@@ -89,7 +89,7 @@ jobs:
       continue-on-error: true
       run: isort --check-only samponlp/ tests/
 
-  # Linux wheels using manylinux
+  # Linux wheels - только CPython
   build-linux:
     name: Build wheels on Linux (${{ matrix.target }})
     runs-on: ubuntu-latest
@@ -105,7 +105,7 @@ jobs:
       uses: PyO3/maturin-action@v1
       with:
         target: ${{ matrix.target }}
-        args: --release --out dist --find-interpreter -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
+        args: --release --out dist -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
         sccache: 'true'
         manylinux: auto
       env:
@@ -117,7 +117,7 @@ jobs:
         name: wheels-linux-${{ matrix.target }}
         path: dist/*.whl
 
-  # macOS wheels (both Intel and Apple Silicon)
+  # macOS wheels - только CPython
   build-macos:
     name: Build wheels on macOS (${{ matrix.target }})
     runs-on: macos-latest
@@ -133,7 +133,7 @@ jobs:
       uses: PyO3/maturin-action@v1
       with:
         target: ${{ matrix.target }}
-        args: --release --out dist --find-interpreter -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
+        args: --release --out dist -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
         sccache: 'true'
       env:
         PYO3_USE_ABI3_FORWARD_COMPATIBILITY: 1
@@ -145,7 +145,7 @@ jobs:
         name: wheels-macos-${{ matrix.target }}
         path: dist/*.whl
 
-  # Windows wheels
+  # Windows wheels - только CPython
   build-windows:
     name: Build wheels on Windows (${{ matrix.target }})
     runs-on: windows-latest
@@ -161,7 +161,7 @@ jobs:
       uses: PyO3/maturin-action@v1
       with:
         target: ${{ matrix.target }}
-        args: --release --out dist --find-interpreter -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
+        args: --release --out dist -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
         sccache: 'true'
       env:
         PYO3_USE_ABI3_FORWARD_COMPATIBILITY: 1
