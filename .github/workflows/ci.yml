@@ -145,14 +145,11 @@ jobs:
         name: wheels-macos-${{ matrix.target }}
         path: dist/*.whl
 
-  # Windows wheels - только CPython
+  # Windows wheels - только CPython x64
   build-windows:
-    name: Build wheels on Windows (${{ matrix.target }})
+    name: Build wheels on Windows
     runs-on: windows-latest
     if: github.event_name == 'release'
-    strategy:
-      matrix:
-        target: [x64, x86]
     
     steps:
     - uses: actions/checkout@v4
@@ -160,7 +157,7 @@ jobs:
     - name: Build wheels
       uses: PyO3/maturin-action@v1
       with:
-        target: ${{ matrix.target }}
+        target: x64
         args: --release --out dist -i python3.8 -i python3.9 -i python3.10 -i python3.11 -i python3.12
         sccache: 'true'
       env:
@@ -169,7 +166,7 @@ jobs:
     - name: Upload wheels
       uses: actions/upload-artifact@v4
       with:
-        name: wheels-windows-${{ matrix.target }}
+        name: wheels-windows-x64
         path: dist/*.whl
 
   # Source distribution
