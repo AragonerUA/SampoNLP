@@ -136,26 +136,6 @@ pytest tests/
 python run_pipeline.py
 ```
 
-## 📊 Performance
-
-On a typical corpus of 50,000 morpheme candidates:
-- **Processing time**: ~2-5 minutes
-- **Memory usage**: ~500MB
-- **Convergence**: Usually within 20-50 iterations
-
-## 📝 Citation
-
-If you use SampoNLP in your research, please cite:
-
-```bibtex
-@article{samponlp2025,
-  title={SampoNLP: Unsupervised Morpheme Discovery for Uralic Languages},
-  author={Your Name},
-  journal={Journal Name},
-  year={2025}
-}
-```
-
 ## 📄 License
 
 SampoNLP is released under the [Apache 2.0 License](LICENSE).
@@ -164,23 +144,9 @@ SampoNLP is released under the [Apache 2.0 License](LICENSE).
 
 Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## 💖 Support
-
-If you find SampoNLP useful, please consider:
-- ⭐ Starring the repository
-- 📢 Sharing it with colleagues
-- 💬 Providing feedback via issues
-- 🙏 [Sponsoring the project](https://github.com/sponsors/yourusername)
-
 ## 🙏 Acknowledgments
 
 This project was inspired by morphological analysis needs in computational linguistics research for Uralic languages.
-
-## 📬 Contact
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/samponlp/issues)
-- **Email**: your.email@example.com
-- **Website**: [your-website.com](https://your-website.com)
 
 ---
 
