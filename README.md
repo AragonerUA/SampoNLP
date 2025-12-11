@@ -139,6 +139,14 @@ SampoNLP is released under the [Apache 2.0 License](LICENSE).
 
 Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
+## 💖 Support
+
+If you find SampoNLP useful, please consider:
+- ⭐ Starring the repository
+- 📢 Sharing it with colleagues
+- 💬 Providing feedback via issues
+- 🙏 [Sponsoring the project](https://github.com/sponsors/AragonerUA)
+
 ## 🙏 Acknowledgments
 
 This project was inspired by morphological analysis needs in computational linguistics research for Uralic languages.
