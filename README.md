@@ -30,7 +30,7 @@ pip install samponlp
 ### From source
 
 ```bash
-git clone https://github.com/yourusername/samponlp.git
+git clone https://github.com/AragonerUA/samponlp.git
 cd samponlp
 pip install maturin
 maturin develop --release
@@ -84,7 +84,6 @@ SampoNLP comes with pre-configured settings for:
 - 🇫🇮 **Finnish** (`language='finnish'`)
 - 🇪🇪 **Estonian** (`language='estonian'`)
 - 🇭🇺 **Hungarian** (`language='hungarian'`)
-- 🌐 **General Uralic** (`language='uralic'`)
 
 Each language has customized:
 - Alphabet validation patterns
@@ -119,7 +118,7 @@ Comprehensive documentation is available in the [`docs/`](docs/) folder:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Clone the repository
-git clone https://github.com/yourusername/samponlp.git
+git clone https://github.com/AragonerUA/samponlp.git
 cd samponlp
 
 # Build with maturin
