@@ -103,10 +103,6 @@ For detailed algorithm description, see our paper (link coming soon).
 
 ## 📖 Documentation
 
-Comprehensive documentation is available in the [`docs/`](docs/) folder:
-
-- [Usage Guide](docs/usage.md) - Detailed examples and API reference
-- [Algorithm Details](docs/algorithm.md) - Mathematical formulation
 - [Contributing Guide](CONTRIBUTING.md) - How to contribute
 
 ## 🛠️ Development
