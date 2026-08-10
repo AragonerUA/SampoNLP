@@ -1,3 +1,5 @@
+
+
 <h1 align="center">SampoNLP</h1>
 <p align="center">Unsupervised Morpheme Discovery for Uralic Languages</p>
 
@@ -84,6 +86,7 @@ SampoNLP comes with pre-configured settings for:
 - 🇫🇮 **Finnish** (`language='finnish'`)
 - 🇪🇪 **Estonian** (`language='estonian'`)
 - 🇭🇺 **Hungarian** (`language='hungarian'`)
+- 🌍 **General Uralic** (`language='uralic'`)
 
 Each language has customized:
 - Alphabet validation patterns
